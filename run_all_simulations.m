@@ -114,3 +114,33 @@ for i = 1:length(scripts_to_run)
     fprintf('Script finished. Cooling down for %d minutes...\n', round(restTime/60));       
     pause(restTime);
 end
+
+clear
+%% === Classification with Augmentation ===
+scripts_to_run = { ...
+    './04_simulation_scripts/Classification.m'
+};
+
+fprintf('Batch process started at %s\n', datestr(now));
+
+for i = 1:length(scripts_to_run)
+
+    current_script = scripts_to_run{i};
+    
+    try
+        fprintf('Starting: %s ... ', current_script);
+        
+        run(current_script);
+        
+        fprintf('COMPLETED successfully at %s.\n', datestr(now));
+    catch ME
+        fprintf('FAILED at %s.\n', datestr(now));
+        fprintf('Error in %s: %s\n', current_script, ME.message);
+    end
+    
+    % (Keeping only our loop variables)
+    clearvars -except scripts_to_run i; 
+    restTime = 300;
+    fprintf('Script finished. Cooling down for %d minutes...\n', round(restTime/60));       
+    pause(restTime);
+end
