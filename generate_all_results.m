@@ -1,7 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % generate_all_results - The code is to generate the tables for the
-% evaluation results, Table 2 to 6 in the main manuscript and Table 1 to 3
+% evaluation results, Table 2 to 7 in the main manuscript and Table 1 to 3
 % in the Supplementary Material
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -155,3 +155,14 @@ q_studentized = fzero(studentizedCDF, 4.0);
 q_alpha = q_studentized / sqrt(2);
 % Compute the Critical Difference (CD)
 CD = q_alpha * sqrt((numMeth * (numMeth + 1)) / (6 * N_effective));
+
+%% === Aggregate Results of Classification ===
+load ./06_results/Classification/5NN_SIEM.mat
+dataMatrix = [mean_0, std_0; ...
+              mean_aug, std_aug];
+
+T_class = array2table(dataMatrix, ...
+    'VariableNames', {'Mean', 'StdDev'}, ...
+    'RowNames', {'No Aug', 'Augmentation'});
+
+disp(T_class);
