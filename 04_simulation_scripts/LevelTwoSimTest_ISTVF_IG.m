@@ -58,7 +58,7 @@ for s = 1:S                                                                 % Lo
     [Xig,YnewI] = ISTVF_to_posture(CnewIG,V_ref,W_ref,mpos);
     XnewIG(s,:) = Xig;
 
-    %%%% --- b). SIEM Multivariate Gaussian ---
+    %%%% --- b). ISTVF Multivariate Gaussian ---
 
     %Multivariate Gaussian Distribution
     SnewMG = GaussGeneration(S,Ntest,0);
