@@ -35,7 +35,7 @@ nexttile(1)
 hold on;plot(x1,x1,'k-','Linewidth',2);plot(x1,y1,'ro','MarkerSize',10);plot(x2,y2,'b+','MarkerSize',10);plot(x3,y3,'c.','MarkerSize',10);
 x_limits = xlim;
 ylim(x_limits)
-title({'Level One Simulation:', '{/it IS-TVF/SequentialPCA/IG}'}, 'interpreter','latex')
+title({'Level One Simulation:', '{\it IS-TVF/SequentialPCA/IG}'}, 'interpreter','latex')
 set(gca,'FontSize',16)
 
 %% === First Level Model: SIEM/IG ===
@@ -63,12 +63,12 @@ xmin = min([min(y1),min(y2),min(y3),min(x1),min(x2),min(x3)]);
 figure(1);
 nexttile(2)
 hold on;plot(x1,x1,'k-','Linewidth',2);plot(x1,y1,'ro','MarkerSize',10);plot(x2,y2,'b+','MarkerSize',10);plot(x3,y3,'c.','MarkerSize',10);
-title({'Level One Simulation:', '{/it SIEM/SequentialPCA/IG}'},'interpreter','latex')
+title({'Level One Simulation:', '{\it SIEM/SequentialPCA/IG}'},'interpreter','latex')
 set(gca,'FontSize',16)
 
-xlabel(t,'LogLikelihood of Test Sequences $/alpha_i^/prime$','FontSize',16,'interpreter','latex')
-ylabel(t,'Loglikelihood of Second Level Simulations $/hat{/alpha_i}$','FontSize',16,'interpreter','latex')
-LGD = legend({'Test quantiles','{/it IG}','{/it MVG}','PWI'},'Orientation','horizontal');
+xlabel(t,'LogLikelihood of Test Sequences $\alpha_i^\prime$','FontSize',16,'interpreter','latex')
+ylabel(t,'Loglikelihood of Second Level Simulations $\hat{\alpha_i}$','FontSize',16,'interpreter','latex')
+LGD = legend({'Test quantiles','{\it IG}','{\it MVG}','PWI'},'Orientation','horizontal');
 LGD.Layout.Tile = 'north';
 set(f,"Position",[50 50 500 560])
 exportgraphics(f,'../06_results/figures/qqplot_test.pdf','Resolution',300) 
